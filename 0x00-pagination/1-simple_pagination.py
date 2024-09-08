@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Index page Returned."""
 from typing import List, Tuple
-import csv, math
+import csv
+import math
+
 
 def index_range(page: int, page_size: int) -> Tuple:
     """Return tuple."""
@@ -30,7 +32,7 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> list:
         """Gets start and end page and asserts."""
-        assert type(page) == int and type(page_size) == int
+        assert type(page) is int and type(page_size) is int
         assert page > 0 and page_size > 0
         start, end = index_range(page, page_size)
         data = self.dataset()
