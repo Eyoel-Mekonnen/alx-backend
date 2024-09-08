@@ -46,11 +46,11 @@ class Server:
         start, end = index_range(page, page_size)
         total_pages = math.ceil(len(data) / page_size)
         if end < len(self.__dataset):
-            next_page = end + 1
+            next_page = page + 1
         else:
             next_page = None
         if start > 0:
-            prev_page = start - 1
+            prev_page = page - 1
         else:
             prev_page = None
         dict_ = {
