@@ -18,15 +18,14 @@ class FIFOCache(BaseCaching):
             return
         self.index = 0
         self.new_dict = {}
-        if not self.cache_data or len(self.cache_data) < self.MAX_ITEMS:
+        if not self.cache_data or len(self.cache_data) < BaseCaching.MAX_ITEMS:
             self.cache_data[key] = item
         if key in self.cache_data:
             self.cache_data[key] = item
             return
         else:
-            print("index to look for now is {}".format(FIFOCache.counter))
             for key1, value1 in self.cache_data.items():
-                if self.index > self.MAX_ITEMS:
+                if self.index > BaseCaching.MAX_ITEMS:
                     break
                 elif FIFOCache.counter == self.index:
                     discarded = "DISCARD: " + str(key1)
@@ -36,7 +35,7 @@ class FIFOCache(BaseCaching):
                     self.new_dict[key1] = value1
                 self.index = self.index + 1
             FIFOCache.counter = FIFOCache.counter + 1
-            if FIFOCache.counter >= MAX_ITEMS:
+            if FIFOCache.counter >= BaseCaching.MAX_ITEMS:
                 FIFOCache.counter = 0
             self.cache_data = self.new_dict
 
