@@ -24,4 +24,9 @@ class LRUCache(BaseCaching):
 
     def get(self, key):
         """Retrieve an item by key."""
-        return self.cache_data.get(key, None)
+        if key is None or key not in self.cache_data:
+            return None
+        else:
+            value = self.cache_data.pop(key)
+            self.cache_data[key] = value
+            return value
