@@ -37,7 +37,7 @@ class LIFOCache(BaseCaching):
                 self.index = self.index + 1
             LIFOCache.counter = LIFOCache.counter - 1
             if LIFOCache.counter < 0:
-                LIFOCache.counter = BaseCache.MAX_ITEMS - 1
+                LIFOCache.counter = BaseCaching.MAX_ITEMS - 1
             self.cache_data = self.new_dict
 
     def get(self, key):
