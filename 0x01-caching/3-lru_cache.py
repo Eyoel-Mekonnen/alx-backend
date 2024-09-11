@@ -15,9 +15,6 @@ class LRUCache(BaseCaching):
         """Evict the Least Recently Used."""
         if key is None or item is None:
             return
-        if len(self.cache_data) < BaseCaching.MAX_ITEMS:
-            self.cache_data[key] = item
-            return
         if key in self.cache_data:
             del self.cache_data[key]
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
