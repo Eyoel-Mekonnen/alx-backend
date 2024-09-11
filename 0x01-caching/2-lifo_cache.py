@@ -26,7 +26,7 @@ class LIFOCache(BaseCaching):
             return
         else:
             for key1, value1 in self.cache_data.items():
-                if self.index > BaseCaching.MAX_ITEMS:
+                if self.index >= BaseCaching.MAX_ITEMS:
                     break
                 elif self.index == LIFOCache.counter:
                     discarded = "Discard: " + str(key1)
