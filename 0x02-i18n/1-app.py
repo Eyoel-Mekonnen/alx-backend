@@ -8,8 +8,8 @@ class Config:
     """Language class."""
 
     LANGUAGES = ["en", "fr"]
-    babel_default_locale = "en"
-    timezone = "UTC"
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
 app = Flask(__name__)
