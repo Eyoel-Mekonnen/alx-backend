@@ -38,10 +38,9 @@ def home():
 @babel.localeselector
 def get_locale():
     """Determine the Language of user."""
-    if g.user:
-        locale = g.user['locale']
-        if locale in app.config['LANGUAGES']:
-            return locale
+    locale = request.args.get('locale')
+    if locale:
+        return locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
@@ -53,7 +52,7 @@ def before_request():
 
 def get_user():
     """Mock Log in."""
-    if request.args.get('login_as'):
+    if request.args.get('login_as', type=int):
         user_id = request.args.get('login_as', type=int)
         if user_id in users:
             user_dictionary = users[user_id]
