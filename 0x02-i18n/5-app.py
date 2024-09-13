@@ -40,7 +40,8 @@ def get_locale():
     """Determine the Language of user."""
     if g.user:
         locale = g.user['locale']
-        return locale
+        if locale in app.config['LANGUAGES']:
+            return locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
