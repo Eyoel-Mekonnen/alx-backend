@@ -55,8 +55,8 @@ def get_user():
     """Mock Log in."""
     if request.args.get('login_as'):
         user_id = request.args.get('login_as', type=int)
-        user_dictionary = users[user_id]
-        return user_dictionary
+        if user_id in users:
+            user_dictionary = users[user_id]
     else:
         return None
 
