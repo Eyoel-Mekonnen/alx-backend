@@ -56,6 +56,7 @@ def get_user():
         user_id = request.args.get('login_as', type=int)
         if user_id in users:
             user_dictionary = users[user_id]
+            return user_dictionary
     else:
         return None
 
