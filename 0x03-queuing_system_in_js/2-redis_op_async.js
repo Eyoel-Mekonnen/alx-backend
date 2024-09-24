@@ -6,7 +6,10 @@ const { promisify } = require('util');
 
 client.on('error', (error) => {
   console.log('Redis client is not connected to server'); 
-})
+});
+client.on('connect', () => {
+  console.log('Redis client connected to server');
+});
 const setNewSchool = async (schoolName, value) => {
   //client.set(schoolName, value, redis.print)
   const setasync = promisify(client.set).bind(client);
